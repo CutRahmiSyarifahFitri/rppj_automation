@@ -1,0 +1,27 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-frontend
+      args:
+        CHROME_VERSION: 126.0.6478.114
+        RUBY_VERSION: 3.3.1
+    image: insting_automation:frontend
+    platform: linux/amd64
+    network_mode: host
+    environment:
+      - TAGS=${TAGS}
+      - EMAIL_RECIPIENTS=${EMAIL_RECIPIENTS}
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-backend
+      args:
+        CHROME_VERSION: 126.0.6478.114
+        RUBY_VERSION: 3.3.1
+    image: insting_automation:backend
+    platform: linux/amd64
+    network_mode: host
+    environment:
+      - TAGS=${TAGS}
+      - EMAIL_RECIPIENTS=${EMAIL_RECIPIENTS}

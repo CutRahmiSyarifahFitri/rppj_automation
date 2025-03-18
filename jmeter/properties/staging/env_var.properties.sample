@@ -1,0 +1,3 @@
+# STAGING_VAR.properties
+
+env.auth_token=Bearer xxx

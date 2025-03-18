@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+# Gemfile
+gem 'capybara', '~>3.40.0'
+gem 'cucumber', '~>9.2.0'
+gem 'cuke_modeler', '~> 3.0'
+gem 'data_magic', '~> 0.21'
+gem 'dotenv', '~>3.1.2'
+gem 'faker', '~>3.4.1'
+gem 'google-apis-drive_v3'
+gem 'googleauth'
+gem 'google-cloud-storage', '~>1.52.0'
+gem 'mail', '~>2.8.1'
+gem 'ordinare', '~>0.4.0'
+gem 'parallel_tests', '~>4.7.1'
+gem 'rake', '~>13.1.0'
+gem 'report_builder', '~>1.9'
+gem 'rspec', '~>3.13.0'
+gem 'rspec-retry', '~>0.6.2'
+gem 'rubocop', '~>1.63.5'
+gem 'selenium-webdriver', '~>4.20.1'
+gem 'site_prism', '~>5.0.1'
+gem 'site_prism-table', '~>0.2.0'
+gem 'httparty'

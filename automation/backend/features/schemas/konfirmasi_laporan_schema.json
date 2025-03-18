@@ -1,0 +1,2319 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    },
+    "total_data": {
+      "type": "integer"
+    },
+    "total_per_page": {
+      "type": "null"
+    },
+    "total_page": {
+      "type": "null"
+    },
+    "current_page": {
+      "type": "integer"
+    },
+    "query_result": {
+      "type": "object",
+      "properties": {
+        "isafe": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "confirmation_deadline": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "source_of_cause": {
+                  "type": "string"
+                },
+                "lokasi_name": {
+                  "type": ["null", "string"]
+                },
+                "status": {
+                  "type": "string"
+                },
+                "pelapor": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "isafe_no": {
+                      "type": "string"
+                    },
+                    "department": {
+                      "type": "string"
+                    },
+                    "company": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "isafe_no",
+                    "department",
+                    "company"
+                  ]
+                },
+                "sublokasi_name": {
+                  "type": "null"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                },
+                "updated_at": {
+                  "type": ["null", "string"]
+                },
+                "updated_by": {
+                  "type": ["null", "string"]
+                },
+                "validator": {
+                  "type": ["null", "string"]
+                },
+                "requestor": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "description",
+                "risk",
+                "confirmation_deadline",
+                "categories",
+                "source_of_cause",
+                "lokasi_name",
+                "status",
+                "pelapor",
+                "sublokasi_name",
+                "created_at",
+                "created_by",
+                "updated_at",
+                "updated_by",
+                "validator",
+                "requestor"
+              ]
+            }
+          ]
+        },
+        "files": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "file_url": {
+                  "type": "string"
+                },
+                "file_type": {
+                  "type": "string"
+                },
+                "file_name": {
+                  "type": "string"
+                },
+                "create_by": {
+                  "type": "null"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "type",
+                "file_url",
+                "file_type",
+                "file_name",
+                "create_by",
+                "createdAt",
+                "updatedAt"
+              ]
+            }
+          ]
+        },
+        "history": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                 "type": ["null", "string"]
+                },
+                "sub_location": {
+                  "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                  "type": ["null", "string"]
+                },
+                "sub_location": {
+                 "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                  "type": ["null", "string"]
+                },
+                "sub_location": {
+                  "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                  "type": ["null", "string"]
+                },
+                "sub_location": {
+                  "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                  "type": ["null", "string"]
+                },
+                "sub_location": {
+                 "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                  "type": ["null", "string"]
+                },
+                "sub_location": {
+                  "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                 "type": ["null", "string"]
+                },
+                "sub_location": {
+                  "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "reason": {
+                  "type": "null"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "master_location": {
+                  "type": ["null", "string"]
+                },
+                "sub_location": {
+                  "type": ["null", "string"]
+                },
+                "risk": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "categories": {
+                  "type": "string"
+                },
+                "assignTo": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "reason",
+                "description",
+                "master_location",
+                "sub_location",
+                "risk",
+                "status",
+                "createdAt",
+                "updatedAt",
+                "categories",
+                "assignTo"
+              ]
+            }
+          ]
+        },
+        "validationHistory": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                 "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                 "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "hazard_id": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "integer"
+                },
+                "isafe_no": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                },
+                "notes": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": [
+                "id",
+                "hazard_id",
+                "status",
+                "isafe_no",
+                "message",
+                "notes",
+                "created_at",
+                "created_by"
+              ]
+            }
+          ]
+        }
+      },
+      "required": ["isafe", "files", "history", "validationHistory"]
+    }
+  },
+  "required": [
+    "status",
+    "message",
+    "total_data",
+    "total_per_page",
+    "total_page",
+    "current_page",
+    "query_result"
+  ]
+}

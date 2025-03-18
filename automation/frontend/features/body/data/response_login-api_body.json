@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "message": "success",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiY3JlYXRlZF9hdCI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjUtMDEtMjNUMTE6MDM6MDIuNzI0WiIsImRlbGV0ZWRfYXQiOm51bGwsImNyZWF0ZWRfYnkiOm51bGwsInVwZGF0ZWRfYnkiOm51bGwsImRlbGV0ZWRfYnkiOm51bGwsImVtYWlsIjoicnBwakBtaW5lcmdvc3lzdGVtcy5jb20iLCJuYW1lIjoiUlBQSiIsInVzZXJuYW1lIjpudWxsLCJhdmF0YXIiOm51bGwsInBhc3N3IjoiNzQzZThhMjNjNjRkYTI5MzY0NzUxYWU3MjhiZWNlZjE0ZWQ2OWNlOWU2MjYzZjE1YjlkNmU0N2M1ZGU3YWIwMzM3ZDc5MWFiMGIyZGNkMThiOGI2YTI2ZmI5YjY3MzE5ZTUwNTE1NDA4YjlkNTlhNDFkODhhNGI4YWQxN2ZlNDIiLCJyb2xlX25hbWUiOiJVU0VSIiwiaWF0IjoxNzQxMjI3MjAzLCJleHAiOjE3NDEzMTM2MDN9.AyKtBMKFWNSRysaon8bvkZGy_5tkeeDxauDYhVwnwjQ",
+    "name": "RPPJ",
+    "email": "rppj@minergosystems.com",
+    "avatar": null,
+    "user_id": "VTJGc2RHVmtYMThZZVB6L3pKRG1VSG1HcFdCY2xhbmZJYzdzR2JoOThBST0=",
+    "role": "USER"
+  }
+}

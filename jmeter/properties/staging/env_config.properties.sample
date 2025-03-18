@@ -1,0 +1,4 @@
+# STAGING_CONFIG.properties
+
+env.base_api_url=safety.ugems.id
+env.protocol=https

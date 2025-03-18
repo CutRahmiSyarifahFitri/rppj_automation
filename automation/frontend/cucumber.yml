@@ -1,0 +1,4 @@
+# cucumber.yml
+default: --format pretty --strict --publish-quiet --require features
+rerun: --format progress --publish-quiet --format json --out features/report/initial/cucumber_rerun<%= ENV['TEST_ENV_NUMBER'] || 1 %>.json --require features
+parallel: --format pretty --format json --out features/report/initial/cucumber_<%= ENV['TEST_ENV_NUMBER'] || 1 %>.json --format rerun --out features/report/rerun_<%= ENV['TEST_ENV_NUMBER'] || 1 %>.txt --strict --publish-quiet --require features

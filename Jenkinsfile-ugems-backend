@@ -1,0 +1,187 @@
+pipeline {
+    options {
+      gitLabConnection('gitlab_conn_devops02')
+    }
+    agent any
+    environment {
+        DOCKER_REGISTRY = 'docker.io'
+        DOCKER_USER = 'digitechdevops2'
+        DOCKER_IMAGE = 'qa-insting-automation-backend'
+        DOCKER_VERSION=sh (returnStdout: true, script: 'echo v$(./git-buildnumber)-dev').trim()
+        DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        ENV_JSON_SA_FILE = 'env-json-sa-qa-automation-frontend-development'
+        ENV_JSON_CS_FILE = 'env-json-cs-automation-frontend-development'
+        GCS_SA_FILE = 'gcs-sa-qa-automation'
+    }
+    stages {
+        stage('Cleanup Environments Folder') {
+            steps {
+                script {
+                    echo 'Cleaning up environments folder...'
+                    sh 'ls -all environments'
+                    sh 'rm -rfv environments'
+                    sh 'mkdir environments'
+                    sh 'ls -all environments'
+                }
+            }
+        }
+        stage('Set Environment Variables') {
+            steps {
+                script {
+                    echo "params.ENVIRONMENT: ${params.ENVIRONMENT}"
+                    if (currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause').size() > 0) {
+                        echo "Build triggered by scheduler"
+                        // For production
+                        // env.TAGS = "@production"
+                        // env.ENV_FILE = 'production-env-qa-insting-automation'
+                        // env.ENV_CRED_FILE = 'production-env-cred-qa-insting-automation'
+                        // env.ENVIRONMENT = 'production'
+
+                        // For staging
+                        env.TAGS = "@staging and not @wip"
+                        env.ENV_FILE = 'staging-env-qa-insting-automation'
+                        env.ENV_CRED_FILE = 'staging-env-cred-qa-insting-automation'
+                        env.ENVIRONMENT = 'staging'
+                    } else {
+                        if (params.ENVIRONMENT == 'staging') {
+                            echo "ENV STAGING"
+                            env.ENV_FILE = 'staging-env-qa-insting-automation'
+                            env.ENV_CRED_FILE = 'staging-env-cred-qa-insting-automation'
+                            env.TAGS = "${params.STAGING_TAGS}"
+                            env.ENVIRONMENT = 'staging'
+                        } else {
+                            echo "ENV PRODUCTION"
+                            env.ENV_FILE = 'production-env-qa-insting-automation'
+                            env.ENV_CRED_FILE = 'production-env-cred-qa-insting-automation'
+                            env.TAGS = "${params.PRODUCTION_TAGS}"
+                            env.ENVIRONMENT = 'production'
+                        }
+                    }
+                    env.EMAIL_RECIPIENTS = "${params.EMAIL_RECIPIENTS}"
+                    echo "EMAIL_RECIPIENTS is set to: ${env.EMAIL_RECIPIENTS}"
+                    echo "ENV_FILE is set to: ${env.ENV_FILE}"
+                    echo "TAGS is set to: ${env.TAGS}"
+                }
+            }
+        }
+        stage('Initiate') {
+            post {
+                failure {
+                    updateGitlabCommitStatus name: 'Initiate', state: 'failed'
+                }
+                success {
+                    updateGitlabCommitStatus name: 'Initiate', state: 'success'
+                }
+                aborted {
+                    updateGitlabCommitStatus name: 'Initiate', state: 'canceled'
+                }
+            }
+               
+            when{
+                anyOf {
+                    expression{
+                        return GIT_BRANCH =~ params.BRANCH_NAME
+                    }
+                }
+            }
+            steps {
+                script {
+                    echo "params.ENVIRONMENT: ${params.ENVIRONMENT}"
+                    if (params.ENVIRONMENT == 'staging') {
+                        echo "ENV STAGING"
+                        withCredentials([file(credentialsId: env.ENV_FILE, variable: 'ENV_FILE_TMP')]) {
+                            sh '''
+                                cp -vf ${ENV_FILE_TMP} environments/.env.staging
+                            '''
+                        }
+                        withCredentials([file(credentialsId: "${ENV_CRED_FILE}", variable: 'ENV_CRED_FILE_TMP')]) {
+                            sh '''
+                                cp -vf ${ENV_CRED_FILE_TMP} environments/.env.cred.staging
+                            '''
+                        }
+                    } else {
+                        echo "ENV PRODUCTION"
+                        withCredentials([file(credentialsId: env.ENV_FILE, variable: 'ENV_FILE_TMP')]) {
+                            sh '''
+                                cp -vf ${ENV_FILE_TMP} environments/.env.production
+                            '''
+                        }
+                        withCredentials([file(credentialsId: "${ENV_CRED_FILE}", variable: 'ENV_CRED_FILE_TMP')]) {
+                            sh '''
+                                cp -vf ${ENV_CRED_FILE_TMP} environments/.env.cred.production
+                            '''
+                        }
+                    }
+                }
+                //        ENV_JSON_SA_FILE = 'env-json-sa-qa-automation-frontend-development'
+                withCredentials([file(credentialsId: "${ENV_JSON_SA_FILE}", variable: 'ENV_JSON_SA_FILE_TMP')]) {
+                    sh '''
+                        cp -vf ${ENV_JSON_SA_FILE_TMP} config/credentials/service_account.json
+                    '''
+                }
+                //        ENV_JSON_CS_FILE = 'env-json-cs-automation-frontend-development'
+                withCredentials([file(credentialsId: "${ENV_JSON_CS_FILE}", variable: 'ENV_JSON_CS_FILE_TMP')]) {
+                    sh '''
+                        cp -vf ${ENV_JSON_CS_FILE_TMP} config/credentials/client_secret.json
+                    '''
+                }
+                //        GCS_SA_FILE = 'gcs-sa-qa-automation'
+                withCredentials([file(credentialsId: "${GCS_SA_FILE}", variable: 'GCS_SA_FILE_TMP')]) {
+                    sh '''
+                        cp -vf ${GCS_SA_FILE_TMP} config/credentials/qa-automation-service-account.json
+                    '''
+                }
+            }
+        }
+        stage('Build Image') {
+            post {
+                failure {
+                    updateGitlabCommitStatus name: 'Build Image', state: 'failed'
+                }
+                success {
+                    updateGitlabCommitStatus name: 'Build Image', state: 'success'
+                }
+                aborted {
+                    updateGitlabCommitStatus name: 'Build Image', state: 'canceled'
+                }
+            }
+            when{
+                anyOf {
+                    expression{
+                        return GIT_BRANCH =~ params.BRANCH_NAME
+                    }
+                }
+            }
+            steps {
+                updateGitlabCommitStatus name: 'Build Image', state: 'running'
+                sh "echo build image : ${DOCKER_REGISTRY}/${DOCKER_USER}/${DOCKER_IMAGE}:${DOCKER_VERSION}"
+                sh 'docker compose -f ${DOCKER_COMPOSE_FILE} build backend'
+            }
+        }
+        stage('Running Image') {
+            post {
+                failure {
+                    updateGitlabCommitStatus name: 'Running Image', state: 'failed'
+                }
+                success {
+                    updateGitlabCommitStatus name: 'Running Image', state: 'success'
+                }
+                aborted {
+                    updateGitlabCommitStatus name: 'Running Image', state: 'canceled'
+                }
+            }
+            when {
+                anyOf {
+                    expression {
+                        return GIT_BRANCH =~ params.BRANCH_NAME
+                    }
+                }
+            }
+            steps {
+                updateGitlabCommitStatus name: 'Running Image', state: 'running'
+                sh "echo Running image : ${DOCKER_REGISTRY}/${DOCKER_USER}/${DOCKER_IMAGE}:${DOCKER_VERSION}"
+                sh 'docker compose -f ${DOCKER_COMPOSE_FILE} run backend'
+            }
+        }
+    }
+}

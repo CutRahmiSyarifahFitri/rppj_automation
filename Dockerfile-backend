@@ -1,0 +1,71 @@
+# Use ARG to define versions
+ARG CHROME_VERSION
+ARG RUBY_VERSION
+
+FROM ruby:${RUBY_VERSION}
+
+USER root
+
+# Use ARG to define versions
+ARG CHROME_VERSION
+ARG RUBY_VERSION
+
+# Update the package list and install dependencies
+RUN apt-get update && apt-get install -y \
+    wget \
+    curl \
+    unzip \
+    gnupg \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common \
+    --no-install-recommends
+
+RUN echo "Chrome Version: $CHROME_VERSION"
+
+# Install Chrome WebDriver
+RUN mkdir -p /opt/chromedriver-$CHROME_VERSION && \
+    curl -sS -o /tmp/chromedriver_linux64.zip https://storage.googleapis.com/chrome-for-testing-public/$CHROME_VERSION/linux64/chromedriver-linux64.zip && \
+    unzip -qq /tmp/chromedriver_linux64.zip -d /opt/chromedriver-$CHROME_VERSION && \
+    ls -l /opt/chromedriver-$CHROME_VERSION && \
+    rm /tmp/chromedriver_linux64.zip && \
+    chmod +x /opt/chromedriver-$CHROME_VERSION/chromedriver-linux64/chromedriver && \
+    ln -fs /opt/chromedriver-$CHROME_VERSION/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+
+# Install Chrome
+RUN wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_$CHROME_VERSION-1_amd64.deb \
+    && ls \
+    && apt install -y ./google-chrome-stable_$CHROME_VERSION-1_amd64.deb \
+    && rm ./google-chrome-stable_$CHROME_VERSION-1_amd64.deb
+
+# Set environment variables
+ENV BROWSER=chrome_headless
+ENV CI=false
+ENV TZ='Asia/Jakarta'
+
+# Create app directory
+RUN mkdir /app
+
+# Set the working directory
+WORKDIR /app
+
+# Copy Gemfile and Gemfile.lock first for dependency caching
+COPY automation/backend/Gemfile /app/automation/backend/Gemfile
+COPY automation/backend/Gemfile.lock /app/automation/backend/Gemfile.lock
+
+# Install Bundler
+RUN gem install bundler
+
+# Install dependencies for API
+WORKDIR /app/automation/backend
+RUN bundle install --jobs 4 --retry 3
+
+# Copy the rest of the application code
+COPY . /app
+
+# Debugging step: List the contents of the /app directory
+RUN ls -l /app
+
+WORKDIR /app/automation/backend
+
+ENTRYPOINT ["bundle", "exec", "rake", "rake_automation:parallel_run"]

@@ -1,0 +1,204 @@
+require 'date'
+require 'faker'
+require 'fileutils'
+require 'rake'
+
+require_relative 'loader'
+
+namespace :rake_automation do
+  report_root = ENV['REPORT_ROOT']
+  task :clear_report do
+    p '=====:: Delete report directory via rakefile'
+    FileUtils.rm_rf(report_root, secure: true)
+    FileUtils.mkdir_p report_root
+  end
+
+  task :init_report do
+    @time_stamp = generate_timestamp('%Y-%m-%d_%H-%M-%S')
+    initial_report = File.join(report_root, 'initial')
+    final_report = File.join(report_root, 'final')
+
+    p "=====:: about to create report directories #{report_root}, #{initial_report}, #{final_report} via rakefile"
+
+    FileUtils.mkdir_p([report_root, initial_report, final_report])
+  end
+
+  desc 'Generate HTML report from JSON results'
+  task :generate_report do
+    p '=====:: generate html report from JSON results via rakefile'
+    ReportBuilder.configure do |config|
+      config.input_path = File.join(report_root, 'cucumber.json')
+      config.report_path = File.join(report_root, "cucumber_html_report_#{@time_stamp}")
+      config.report_types = [:html]
+      config.report_title = 'Cucumber Test Results'
+      config.additional_info = { 'Project' => 'Cucumber Project', 'Platform' => 'Cross Platform', 'Report generated on' => @time_stamp }
+      config.color = 'indigo'
+    end
+    ReportBuilder.build_report
+  end
+
+  desc 'Run Cucumber tests'
+  task :cucumber do
+    sh 'bundle exec cucumber'
+  end
+
+  desc 'Run Cucumber tests in parallel'
+  task :parallel do |_t, _args|
+    tags = ENV['TAGS']
+    p '=====:: run test parallel group by features with 2 process via rakefile'
+    log_file = File.join(report_root, 'parallel_tests.log')
+    begin
+      if tags && !tags.empty?
+        sh "bundle exec parallel_cucumber -n 2 -o '-p parallel --tags \"#{tags}\"' 2> #{log_file}"
+      else
+        sh "bundle exec parallel_cucumber -n 2 -o '-p parallel' 2> #{log_file}"
+      end
+    rescue StandardError => e
+      p "=====:: parallel test failed: #{e.message}"
+      p "=====:: Error details: #{strip_ansi_escape_codes(File.read(log_file))}" if File.exist?(log_file)
+    end
+  end
+
+  desc 'Rerun failed scenarios'
+  task :rerun do
+    @temp_status = 1
+    rerun_files = Dir[File.join(report_root, 'rerun_*.txt')]
+
+    rerun_files.each_with_index do |rerun_file, index|
+      # Ensure unique TEST_ENV_NUMBER for each rerun
+      ENV['TEST_ENV_NUMBER'] = (index + 1).to_s
+
+      if File.exist?(rerun_file) && !File.read(rerun_file).strip.empty?
+        p "=====:: rerun failed scenario #{rerun_file} via rakefile"
+        content_rerun = File.read(rerun_file)
+        p "=====:: list of failed scenarios #{content_rerun}"
+
+        status_rerun = system "bundle exec cucumber @#{rerun_file} --profile rerun"
+        @temp_status -= 1 unless status_rerun
+      else
+        p "No scenarios to rerun in #{rerun_file}"
+      end
+    end
+
+    p 'No scenarios to rerun' if rerun_files.empty?
+
+    p "Final status #{@temp_status} : #{@temp_status.positive?}"
+    @status = true if @temp_status.positive?
+  end
+
+  desc 'Merge JSON reports'
+  task :merge_report do
+    output_report = File.join(report_root, "final/final_report_#{@time_stamp}")
+    p "=====:: merging report #{output_report}"
+
+    # Find all JSON report files in the 'initial' directory
+    report_files = Dir.glob(File.join(report_root, 'initial/*.json'))
+    p "=====:: Report files to merge: #{report_files}"
+
+    if report_files.empty?
+      p '=====:: no report files found to merge.'
+      exit(1)
+    else
+      # Debugging: Print each report file's content to check for UTF-8 issues
+      report_files.each do |file|
+        p "=====:: Inspecting file: #{file}"
+        begin
+          file_content = File.read(file, encoding: 'UTF-8')
+          # p "=====:: File content for #{file}:\n#{file_content}"
+          # Attempt to parse the content as JSON to detect any issues
+          JSON.parse(file_content)
+        rescue JSON::ParserError => e
+          p "=====:: JSON parsing error in file #{file}: #{e.message}"
+        rescue StandardError => e
+          p "=====:: Error reading or parsing file #{file}: #{e.message}"
+        end
+      end
+
+      # Find failed screenshots
+      # screenshot_files = Dir.glob(File.join(report_root, 'failed/screenshots/*.png'))
+
+      # Prepare additional info for the report
+      additional_info = {
+        'Browser' => 'Chrome',
+        'Base URL' => ENV['BASE_URL_UI'].to_s,
+        'Environment' => ENV['ENVIRONMENT'].to_s,
+        'Generated report' => @time_stamp,
+        'Tags' => ENV['TAGS']
+      }
+
+      # Prepare options for ReportBuilder
+      options = {
+        input_path: File.join(report_root, 'initial'),
+        report_path: output_report,
+        report_types: %w[retry html json],
+        report_title: "#{ENV['ENVIRONMENT'].to_s.capitalize} Insting Frontend Automation Report #{@time_stamp}",
+        color: 'indigo',
+        additional_info:
+      }
+
+      # Debug: Print the options being passed to ReportBuilder
+      p "=====:: ReportBuilder options: #{options}"
+
+      # Build the report with ReportBuilder
+      begin
+        ReportBuilder.build_report options
+        p '=====:: report merged with screenshots included.'
+      rescue JSON::GeneratorError => e
+        p "=====:: JSON generation error: #{e.message}"
+      end
+    end
+  end
+
+  desc 'Send automation start notification email'
+  task :send_automation_start_email do
+    p '=====:: attempt to send automation notification email via rakefile'
+    recipients = ENV['EMAIL_RECIPIENTS'].split(',')
+    sender = ENV['EMAIL_ADMIN']
+    send_email_notification(
+      sender, # sender's email address
+      recipients, # recipient's email address
+      "#{ENV['ENVIRONMENT'].to_s.capitalize} Insting Frontend Automation #{@time_stamp} is In Progress ", # subject
+      "#{ENV['ENVIRONMENT'].to_s.capitalize} Insting Frontend automation #{@time_stamp} is in progress. You will be notify if automation complete", # email content
+      '' # optional file attachment
+    )
+  end
+
+  desc 'Upload report to GCS'
+  task :upload_report_to_gcs do
+    p '=====:: attempt to upload report to GCS'
+
+    report_file_path = Dir.glob(File.join(report_root, 'final', '*.html')).first
+    file_name = File.basename(report_file_path)
+
+    gcs_file_name = File.join('insting/frontend', file_name)
+
+    @report_link = upload_file(report_file_path, gcs_file_name)
+    puts "Report link: #{@report_link}"
+    p '=====:: report uploaded to GCS successfully.'
+  end
+
+  desc 'Send final report email'
+  task :send_report_email do
+    p '=====:: attempt to send final report email via rakefile'
+
+    recipients = ENV['EMAIL_RECIPIENTS'].split(',')
+    sender = ENV['EMAIL_ADMIN']
+    if @report_link
+      mail = send_email_notification(
+        sender, # sender's email address
+        recipients, # recipient's email address
+        "#{ENV['ENVIRONMENT'].to_s.capitalize} Insting Frontend Automation #{@time_stamp} Test Report", # subject
+        "<p>#{ENV['ENVIRONMENT'].to_s.capitalize} Insting Frontend automation #{@time_stamp} is done, please kindly check the automation report file attached below.</p><p><a href='#{@report_link}' target='_blank'>View Report</a></p>" # email content
+      )
+      p mail.deliver! ? "=====:: Email sent successfully to #{recipients}" : '=====:: Failed to send email.'
+    else
+      p '=====:: report link not available. Email not sent. via rakefile'
+    end
+  end
+
+  task default: 'test:cucumber'
+
+  task testing: %i[upload_report_to_gcs send_report_email]
+
+  task parallel_run: %i[clear_report init_report parallel rerun merge_report upload_report_to_gcs send_report_email]
+end

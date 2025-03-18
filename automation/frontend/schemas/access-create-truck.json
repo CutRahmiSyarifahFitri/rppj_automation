@@ -1,0 +1,12 @@
+{
+  "id": "number",
+  "nomor_lambung": "string",
+  "capacity_in_tons": "number",
+  "year_made": "number",
+  "status": "boolean",
+  "model": "string",
+  "brand": "string",
+  "vendor": "string",
+  "typeoftruck": "string",
+  "description": ""
+}
